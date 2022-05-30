@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Weather</title>
+</head>
+<body>
+    <div class="container">
+        <div class="search-container">
+            <input type="text" id="location-input" placeholder="city name">
+            <button class="search-btn">
+                <img width="20px" src="images/search.png" alt="search icon">
+            </button>
+        </div>
+        <div class="info-section">
+            <div>
+                <h1 id="location">Chennai</h1>
+                <h2 id="temp">32</h2>
+                <p id="condition">Sunny</p>
+                <p id="humidity">Humidity: 100%</p>
+                <p id="wind">Wind: 10kph</p>
+            </div>
+            <div class="weather-icon">
+                <img width="100px" id="condition-icon" src="//cdn.weatherapi.com/weather/64x64/night/116.png" alt="weather icon">
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+<!--<a href="https://www.flaticon.com/free-icons/search" title="search icons">Search icons created by Pixel perfect - Flaticon</a>
+-->
