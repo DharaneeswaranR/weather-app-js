@@ -10,7 +10,7 @@ const windEl = document.getElementById("wind")
 const condIcon = document.getElementById("condition-icon")
 
 async function getWeather(location) {
-    const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${APIKEY}&q=${location}&aqi=no1`)
+    const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${APIKEY}&q=${location}&aqi=no1`)
     const data = await response.json()
 
     return displayWeather(data)
