@@ -11,14 +11,17 @@ const condIcon = document.getElementById("condition-icon")
 
 async function getWeather(location) {
     const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${APIKEY}&q=${location}&aqi=no1`)
-    const data = await response.json()
-
-    return displayWeather(data)
+    
+    if (response.status !== 200) {
+        return displayError(await response.json())
+    } else {
+        const data = await response.json()
+        return displayWeather(data)
+    }
 }
 
 function displayWeather(data) {
-    const { location } = data
-    const { current } = data
+    const { location, current } = data
     const { condition } = current
 
     locationEl.textContent = location.name
@@ -28,6 +31,11 @@ function displayWeather(data) {
     windEl.textContent = `Wind: ${current.wind_kph}kmp`
     condIcon.src = condition.icon
     document.body.style.backgroundImage = `url("https://source.unsplash.com/random/1920x1080/?${condition.text}")`
+}
+
+function displayError(error) {
+    const { message } = error.error
+    document.querySelector(".info-section").innerHTML = `<h3>${message}</h3>`
 }
 
 searchBtnEl.addEventListener("click", () => {
