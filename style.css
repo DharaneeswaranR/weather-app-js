@@ -76,3 +76,8 @@ h2 {
     margin: 10px 0;
     font-size: 3.125rem;
 }
+
+.error {
+    margin-top: 50px;
+    text-align: center;
+}

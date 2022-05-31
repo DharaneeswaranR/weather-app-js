@@ -8,6 +8,8 @@ const conditionEl = document.getElementById("condition")
 const humidityEl = document.getElementById("humidity")
 const windEl = document.getElementById("wind")
 const condIcon = document.getElementById("condition-icon")
+const errorEl = document.querySelector(".error")
+const infoEl = document.querySelector(".info-section")
 
 async function getWeather(location) {
     const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${APIKEY}&q=${location}&aqi=no1`)
@@ -31,11 +33,16 @@ function displayWeather(data) {
     windEl.textContent = `Wind: ${current.wind_kph}kmp`
     condIcon.src = condition.icon
     document.body.style.backgroundImage = `url("https://source.unsplash.com/random/1920x1080/?${condition.text}")`
+    infoEl.style.display = "flex"
+    errorEl.style.display = "none"
 }
 
 function displayError(error) {
     const { message } = error.error
-    document.querySelector(".info-section").innerHTML = `<h3>${message}</h3>`
+
+    errorEl.style.display = "block"
+    infoEl.style.display = "none"
+    errorEl.innerHTML = `<h3>${message}</h3>`
 }
 
 searchBtnEl.addEventListener("click", () => {
