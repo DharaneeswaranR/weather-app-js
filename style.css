@@ -5,9 +5,14 @@
     padding: 0;
 }
 
+html {
+    height: 100%;
+}
+
 body {
     box-sizing: border-box;
     display: flex;
+    height: 100%;
     font-family: 'Inter', sans-serif;
     justify-content: center;
     align-items: center;
@@ -32,7 +37,7 @@ body {
     justify-content: space-between;
 }
 
-.search-btn {
+button {
     width: 40px;
     height: 40px;
     background: rgba(68, 68, 68, 0.696);
@@ -80,4 +85,12 @@ h2 {
 .error {
     margin-top: 50px;
     text-align: center;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:active {
+    background: rgba(101, 101, 101, 0.696)
 }

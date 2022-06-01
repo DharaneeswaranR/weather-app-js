@@ -2,6 +2,7 @@ const APIKEY = "98eaf8d3fb414253a82134104221301"
 
 const inputEl = document.getElementById("location-input")
 const searchBtnEl = document.querySelector(".search-btn")
+const locationBtn = document.querySelector(".location-btn")
 const locationEl = document.getElementById("location")
 const tempEl = document.getElementById("temp")
 const conditionEl = document.getElementById("condition")
@@ -49,6 +50,15 @@ searchBtnEl.addEventListener("click", () => {
     getWeather(inputEl.value)
 })
 
+// Retrieves the user location
+locationBtn.addEventListener("click", () => {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+            getWeather(`${position.coords.latitude}, ${position.coords.longitude}`)
+        })
+    }
+})
+
 inputEl.addEventListener("keypress", event => {
     if (event.key === "Enter") {
         event.preventDefault()
@@ -56,4 +66,5 @@ inputEl.addEventListener("keypress", event => {
     }
 })
 
+// Default location
 getWeather("chennai")
