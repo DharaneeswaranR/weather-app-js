@@ -12,6 +12,7 @@ const condIcon = document.getElementById("condition-icon")
 const errorEl = document.querySelector(".error")
 const infoEl = document.querySelector(".info-section")
 
+// Fetches weather data from api
 async function getWeather(location) {
     const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${APIKEY}&q=${location}&aqi=no1`)
     
@@ -19,6 +20,9 @@ async function getWeather(location) {
         return displayError(await response.json())
     } else {
         const data = await response.json()
+        // Stores last entered location to local storage to be retrieved later
+        localStorage.setItem("location", location)
+        
         return displayWeather(data)
     }
 }
@@ -66,5 +70,5 @@ inputEl.addEventListener("keypress", event => {
     }
 })
 
-// Default location
-getWeather("chennai")
+// Default location or last 
+getWeather(localStorage.getItem("location") || "chennai")
